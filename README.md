@@ -1,2 +1,6 @@
-# facultad-proyectos
-Projects carried out for the university: UTN-FRD. I used Wollok, Haskell, Prolog, and Python.
+# Proyectos realizados en la UTN-FRD
+Durante mi cursada en la 'Universidad Tecnológica Nacional, Facultad Regional Delta', realicé varios proyectos individuales y grupales, en diferentes lenguajes de programación:
+- Wollok
+- Haskell
+- Prolog
+- Python

@@ -1,0 +1,143 @@
+import mensajeria.*
+import mensajeros.*
+
+describe "Test de Mensajeros " {
+
+var destinoPreferido = brooklyn
+var mensajeros = [neo, chuck]
+
+method contratarTodos() {
+	mensajeria.contratar(neo)
+	mensajeria.contratar(roberto)
+	mensajeria.contratar(chuck)
+}
+
+method destinoPago() {
+	paquete.destino(destinoPreferido)
+}
+
+test "la mensajeria no tiene mensajeros"{
+	assert.equals(mensajeria.mensajeros(), [])
+}
+
+test "la mensajeria no tiene a neo"{
+	assert.notThat(mensajeria.mensajeros().contains(neo))
+}
+
+test "La mensajeria tiene a neo como empleado si lo agregarmos" {
+	mensajeria.contratar(neo)
+	assert.that(mensajeria.mensajeros().contains(neo))
+}
+
+test "La mensajeria devuelve a neo y chuck si le pido los cantidatos posibles"{
+	self.contratarTodos()
+	self.destinoPago()
+	paquete.pagar()
+	assert.equals([neo, chuck], mensajeria.candidatosPara(paquete))
+	//assert.equals([roberto], mensajeria.candidatosPara(paquete))
+}
+
+test "La mensajeria tiene Sobrepeso si contrata a todos"{
+	self.contratarTodos()
+	self.destinoPago()
+	assert.that(mensajeria.tieneSobrepeso())
+}
+
+test "No todos los empleados de la mensajeria pueden entregar el paquete"{
+	mensajeria.contratar(neo)
+	mensajeria.contratar(chuck)
+	self.destinoPago()
+	paquete.pagar()
+	assert.that(mensajeria.paqueteFacil(paquete))
+}
+
+test "La mensajeria tiene sobrepeso si contrata a chuck norris "{
+	mensajeria.contratar(chuck)
+	assert.that(mensajeria.tieneSobrepeso())
+}
+
+test "Si neo es empleado, Hay un mensajero que puede enviar el paquete" {
+	destinoPreferido = matrix
+	mensajeria.contratar(neo)
+	self.destinoPago()
+	assert.that(mensajeria.mensajeros().contains(neo))
+}
+
+test "2.7.1 Contratar a un mensajero"{
+	mensajeria.contratar(neo)
+	assert.equals(mensajeria.mensajeros().size(), 1)
+}
+
+test "2.7.2 Despedir a un mensajero"{
+	self.contratarTodos()
+	mensajeria.despedir(neo)
+	assert.equals(mensajeria.mensajeros().size(), 2)
+	
+}
+
+test "2.7.3 Despedir a todos los mensajeros"{
+	mensajeria.despedirATodos()
+	assert.equals(mensajeria.mensajeros().size(), 0)
+}
+ 
+test "2.7.4 Analizar si la mensajeria es grande (si tiene mas de dos mensajeros)"{
+	self.contratarTodos()
+	//mensajeria.despedir(neo)
+	assert.equals(mensajeria.esGrande(), true)
+}
+
+test "2.7.5 Consultar si el paquete puede ser entregado por el primer empleado de la la empresa de mensajería."{
+	//mensajeria.contratar(neo)
+	self.contratarTodos()
+	paquete.pagar()
+	assert.equals(mensajeria.elPrimeroPuedeEntregarlo(), true)
+}
+
+test "2.7.6 Saber el peso del último mensajero de la empresa."{
+	//mensajeria.contratar(chuck)
+	self.contratarTodos()
+	assert.that(mensajeria.pesoDelUltimoMensajero() == 900)
+}
+
+test "3.8.1 Averiguar si un paquete puede ser entregado por la empresa de mensajería, es decir, si al menos uno de sus mensajeros puede entregar el paquete."{
+	self.contratarTodos()
+	assert.that(mensajeria.puedeEntregarse(paquetito))
+}
+
+test "3.8.2 Obtener todos los mensajeros que pueden llevar un paquete dado."{
+	self.contratarTodos()
+	assert.equals(mensajeria.mensajeros(), mensajeria.candidatosPara(paquetito))
+}
+
+test "3.8.3 Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg."{
+	self.contratarTodos()
+	assert.that(mensajeria.tieneSobrepeso())
+}
+
+test "3.8.4 Hacer que la empresa de mensajería envíe un paquete. Para ello elige cualquier mensajero entre los que pueden enviarlo y si no puede lo agrega a los paquetes pendientes. (leer también punto siguiente)"{
+	mensajeria.contratar(neo)
+	assert.that(mensajeria.puedeEntregarse(paquetito))
+}
+
+test "3.8.5 Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados."{
+	assert.that(mensajeria.facturacion() == 0)
+}
+
+test "3.8.6 Dado un conjunto de paquetes, enviarlos a todos."{
+	self.contratarTodos()
+	mensajeria.agregarPaquete(paquetito)
+	mensajeria.enviarATodos()
+	assert.that(mensajeria.paquetes() == 0)
+}
+
+test "3.8.7 Encontrar el paquete pendiente más caro y enviarlo, actualizando los pendientes en caso de haberlo podido enviar."{
+	self.contratarTodos()
+	mensajeria.limpiarPendientes()
+	mensajeria.registrarPendiente(paquete)
+	mensajeria.pendienteMasCaro()
+	paquete.pagar()
+	mensajeria.enviarMasCaro()
+	assert.equals(mensajeria.pendientes().isEmpty(), true)
+}
+
+}

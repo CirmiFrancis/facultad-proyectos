@@ -1,0 +1,49 @@
+========================================================================================================================
+
+Planteo del problema:
+Existe una empresa de envío de paquetes en todo el país que posee varias sucursales y un personal eficiente.
+Cada envío tiene una identificación única del paquete, la ciudad de origen y de destino y el tamaño, expresado en números enteros. Para cada uno se registra además cuándo puede ser entregado: una franja horaria según el día de la semana (por ejemplo, martes de 9 a 15, jueves de 14 a 20, etc). 
+De cada sucursal se sabe en qué ciudad se encuentra y cuales son sus repartidores que se encargan de hacer las entregas de los paquetes de su ciudad. También se conoce el horario en que cada uno trabaja (día de la semana, hora de inicio y final, considerando que no necesariamente todos los dias hace el mismo horario). Puede haber más de una sucursal en la misma ciudad.
+
+========================================================================================================================
+
+Base de conocimiento:
+Se conocen algunos de los predicados con que se modela la base de conocimiento
+% paquete(Paquete, CiudadOrigen, CiudadDestino, Tamaño). 
+% horarioEntrega(Paquete, Dia, HoraInicio, HoraFin).
+% sucursal(Nombre, Ciudad).
+Falta agregar los predicados para representar a los mensajeros, su pertenencia a las sucursales y sus horarios de trabajo
+
+========================================================================================================================
+
+Funcionalidad requerida:
+1.      Envíos express 
+Detectar los paquetes que se envian dentro de una misma ciudad y que tienen un tamaño de hasta 3 unidades, o que siendo de una ciudad a otra su tamaño es exactamente de 1 unidad.
+
+2.      Multiempleo
+Encontrar los mensajeros que trabajen en más de una sucursal de la misma ciudad. 
+
+3.      Entregas
+Relacionar a cada mensajero con cada paquete que podría entregar, a partir de que trabaje en alguna sucursal de la ciudad de destino y que su horario laboral sea compatible con el del paquete. 
+
+4.      Calificación de paquetes
+Teniendo en cuenta a los mensajeros que pueden entregar cada paquete, analizar las variantes y calificar los paquetes de la siguiente manera: 
+Imposible. Ningún empleado puede entregarlo.
+Indiscutido. Un único empleado puede entregarlo.
+Disputado. Varios empleados pueden entregarlo.
+Agregar nuevas calificaciones (no excluyentes de las anteriores) para los paquetes que verifiquen: 
+Todos los empleados de una misma sucursal de la ciudad destino pueden entregarlo.
+Todos los empleados de cualquiera de las sucursales de la ciudad destino pueden entregarlo.
+
+5.      Empleado modelo
+Averiguar quíen es el empleado que tiene la jornada laboral más extensa en un día de la semana, indicando precisamente de qué dia se trata y la cantidad de horas correspondiente. 
+
+========================================================================================================================
+
+A presentar:
+-Completar la base de conocimiento
+-Implementer los predicados correspondientes. 
+-Hacer consultas de ejemplo, al menos dos de cada item mostrando diferentes respuestas.
+-Elegir uno de los predicados y explicar a partir de él el concepto de inversibilidad.
+
+========================================================================================================================

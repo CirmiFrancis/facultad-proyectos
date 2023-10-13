@@ -1,0 +1,10 @@
+import logica.*
+import puntero.*
+import numeros.*
+import configuracion.*
+import wollok.game.*
+
+program JUEGO {
+	configuracion.activarInicio()	
+	game.start()
+}

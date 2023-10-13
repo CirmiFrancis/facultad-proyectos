@@ -1,0 +1,68 @@
+import Habitante.*
+
+describe "Tests de Star Wars"{
+
+	const halconMilenario = new Equipamiento(potencia = 20)
+	const hanYchubby = new Soldado()
+	const ray = new Soldado()
+	
+	const jorgelandia = new Planeta()
+	const roberta = new Soldado(inteligencia = 1, valentia = 1)
+	const roberte = new Soldado(inteligencia = 2, valentia = 2)
+	const roberti = new Soldado(inteligencia = 3, valentia = 3)
+	const roberto = new Soldado(inteligencia = 4, valentia = 4)
+	const robertu = new Soldado(inteligencia = 5, valentia = 5)
+	const arco = new Equipamiento(potencia = 11) //si le pongo "potencia = 10" no se considera un armaUtil
+	const espada = new Equipamiento(potencia = 21)
+	const lanza = new Equipamiento(potencia = 31)
+	
+	const anakin = new Maestro(lado = new Jedi(), inteligencia = 50, valentia = 10, midiclorianos = 27000, sableDeLuz = new Equipamiento(potencia = 250))
+	const abandono = new Suceso(cargaEmocional = -101)
+	const arrepentimiento = new Suceso(cargaEmocional = 101)	
+	
+	test "Han & Chubby tienen el Halcón Milenario y con el uso de desgastó. Luego, Ray lo toma y arregla." {
+		
+		hanYchubby.agregarArma(halconMilenario)
+		assert.that(hanYchubby.arma().any{arma => arma == halconMilenario})
+		halconMilenario.usar()
+		assert.notThat(halconMilenario.buenEstado())
+		hanYchubby.removerArma(halconMilenario)
+		assert.notThat(hanYchubby.arma().any{arma => arma == halconMilenario})
+		ray.agregarArma(halconMilenario)
+		assert.that(ray.arma().any{arma => arma == halconMilenario})
+		halconMilenario.reparar()
+		assert.that(halconMilenario.buenEstado())
+	}
+
+	test "Un planeta con más de tres habitantes que posse una orden."{
+		
+		jorgelandia.agregarHabitante(roberta)
+		jorgelandia.agregarHabitante(roberte)
+		jorgelandia.agregarHabitante(roberti)
+		jorgelandia.agregarHabitante(roberto)
+		jorgelandia.agregarHabitante(robertu)
+		assert.equals(5, jorgelandia.habitantes().size())
+		roberta.agregarArma(arco)
+		assert.that(roberta.arma().any{arma => arma == arco})
+		roberti.agregarArma(espada)
+		assert.that(roberti.arma().any{arma => arma == espada})
+		robertu.agregarArma(lanza)
+		assert.that(robertu.arma().any{arma => arma == lanza})
+		assert.equals(13, roberta.poder())
+		assert.equals(4, roberte.poder())
+		assert.equals(27, roberti.poder())
+		assert.equals(8, roberto.poder())
+		assert.equals(41, robertu.poder())
+		assert.equals(93, jorgelandia.sumatoriaPoder())
+		assert.equals(81, jorgelandia.sumatoriaPoder2())
+		assert.that(jorgelandia.existeOrden())
+	}
+	
+	test "Anakin pasa a ser Sith y luego se convierte en Jedi otra vez" {
+		
+		anakin.vivirSuceso(abandono)
+		assert.equals(100, anakin.lado().odio())
+		anakin.vivirSuceso(arrepentimiento)
+		assert.equals(100, anakin.lado().pazInterior())
+	}
+}

@@ -1,0 +1,90 @@
+import pasteleros.*
+import jurado.*
+
+//Punto 1.1
+test "marcos tiene 1.9 de habilidad inicialmente"{
+	assert.equals(1.9, marcos.habilidad())
+}
+
+test "sonia tiene 5 de habilidad inicialmente" {
+	assert.equals(5, sonia.habilidad())
+}
+
+test "samanta tiene 9 de habilidad" {
+	assert.equals(9, samanta.habilidad())
+}
+
+//Punto 1.2
+test "nuevo ingrediente"{
+	marcos.agregarIngrediente("manteca", 0.1)
+	assert.equals(2, marcos.totalCantidad())
+}
+
+test "otro instrumento de cocina que de suerte"{
+	sonia.instrumento(cucharon)
+	assert.equals(8, sonia.habilidad())
+}
+
+test "variando cantidad/peso"{
+	marcos.agregarIngrediente("chocolate", 1)
+	assert.equals(2.9, marcos.totalCantidad())
+}
+
+//Punto 1.3
+test "calcular habilidad"{
+	francis.calcularHabilidadActual()
+	assert.equals(1,francis.habilidad())
+}
+
+//Punto 1.4
+test "samanta es la pastelera mas habilidosa" {
+	assert.equals(samanta, jurado.masHabilidoso())
+}
+
+test "la diferencia entre el mas habilidoso y el menos habilidoso es 7.1"{
+	assert.equals(7.1, jurado.diferenciaHabilidad())	
+}
+
+//Punto 2.1
+test "marcos NO PUEDE preparar su postre favorito inicialmente"{
+	assert.notThat(marcos.puedeHacerPostreFavorito())
+}
+
+test "marcos PUEDE preparar su postre favorito"{
+	marcos.agregarIngrediente("gelatina", 4)
+	assert.that(marcos.puedeHacerPostreFavorito())
+}
+
+test "sonia NO PUEDE preparar su postre favorito inicialmente"{
+	assert.notThat(sonia.puedeHacerPostreFavorito())
+}
+
+test "sonia PUEDE preparar su postre favorito"{
+	sonia.instrumento(cucharon)
+	assert.that(sonia.puedeHacerPostreFavorito())
+}	
+
+test "samanta NO PUEDE preparar su postre favorito" {
+	assert.notThat(samanta.puedeHacerPostreFavorito())
+}
+
+//Punto 2.2
+test "francis NO PUEDE preparar su postre favorito"{
+	assert.notThat(francis.puedeHacerPostreFavorito())
+}
+
+test "francis PUEDE preparar su postre favorito"{
+	francis.buenHumor(true)
+	francis.calcularHabilidadActual()
+	assert.that(francis.puedeHacerPostreFavorito())
+}
+
+//Punto 2.3
+test "El pastelero más habilidoso que puede preparar su postre favorito"{
+	sonia.instrumento(cucharon)
+	jurado.masHabilidosoFavorito()
+	assert.that(jurado.participantes() != 0)
+}
+
+//Punto 3 y Punto 4 no pedían tests
+//Punto 5 era opcional

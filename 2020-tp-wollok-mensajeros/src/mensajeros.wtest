@@ -1,0 +1,24 @@
+import mensajeros.*
+
+describe "Primer punto" {
+    test "Que roberto pueda llevar un paquete pago" {
+        // el paquete debe estar pago
+        paquete.pagar()
+        
+        // el camion debe tener 1 acoplado
+        camion.acoplados(1)
+        
+        // assert.that(brooklyn.dejarPasar(roberto)) o sino
+        assert.that(paquete.puedeSerEntregadoPor(roberto))
+    }
+    
+    test "Neo no puede llevar llevar un paquete no pago a la Matrix" {
+    	// neo tiene credito
+    	neo.tieneCredito(true)
+    	
+    	// el destino es la matrix
+    	paquete.destino(matrix)
+    
+   		assert.notThat(paquete.puedeSerEntregadoPor(neo))
+   	}
+}

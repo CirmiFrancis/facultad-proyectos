@@ -2,7 +2,7 @@
 
 <div align="center">
 	
-![reemplazar por una animación del juego](https://66.media.tumblr.com/d1ce4491af3a1c389a77a13bc66b020f/afbb9722cf946bc9-02/s400x600/3ef8771179090194be804a0db12b8ebd06523ca7.gifv)
+![reemplazar por una animación del juego](https://raw.githubusercontent.com/CirmiFrancis/facultad-proyectos/main/2020-tp-wollok-game/code.gif)
 
 </div>
 

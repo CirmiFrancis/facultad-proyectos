@@ -4,3 +4,4 @@ Durante mi cursada en la 'Universidad Tecnológica Nacional, Facultad Regional D
 - Haskell 
 - Prolog
 - Python
+- C

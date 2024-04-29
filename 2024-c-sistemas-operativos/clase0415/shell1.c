@@ -20,12 +20,12 @@
  * 
  * shell primitivo en foreground
  * no soporta argumentos en los comandos
- */
+*/
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
 #include <unistd.h>
-#include <string.h>
+#include <string.h> // Este encabezado proporciona declaraciones de funciones y macros relacionadas con manipulación de cadenas (strings). Algunas de las funciones más comunes incluyen: strcpy(), strncopy(), strcat(), strncat(), strlen(), strcmp(), strncmp(), strstr(), strchr(), strrchr()
 #include <sys/types.h>
 #include <sys/wait.h>
 
@@ -58,4 +58,3 @@ int main(int argc, char **argv)
 	} while(LOOP_GRCHERE);
 	return 0;
 }
-

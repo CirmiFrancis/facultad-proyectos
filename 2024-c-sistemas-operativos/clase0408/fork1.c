@@ -19,12 +19,12 @@
  * MA 02110-1301, USA.
  * 
  * 
- */
+*/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include <stdio.h> // Este encabezado proporciona las declaraciones para las funciones de entrada y salida estándar, como printf() y scanf().
+#include <stdlib.h> // Este encabezado proporciona prototipos para funciones de gestión de memoria dinámica, como malloc() y free(), así como otras funciones y macros útiles. Si planeas usar funciones relacionadas con la gestión de memoria dinámica, necesitarás incluir este encabezado. POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
+#include <sys/types.h> // Este encabezado define varios tipos de datos que se utilizan en llamadas al sistema. Algunos de los tipos de datos comunes definidos en este encabezado incluyen pid_t (para identificadores de proceso en sistemas UNIX), uid_t y gid_t (para identificadores de usuario y grupo, respectivamente), entre otros.
+#include <unistd.h> // Este encabezado proporciona prototipos para funciones estándar de Unix, como fork(), exec(), getpid(), etc. Si tu programa realiza llamadas al sistema relacionadas con la administración de procesos, como la creación de nuevos procesos o la obtención del identificador de proceso actual, necesitarás incluir este encabezado.
 
 int main(int argc, char **argv)
 {

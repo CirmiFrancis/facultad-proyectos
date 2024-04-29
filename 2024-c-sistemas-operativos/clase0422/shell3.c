@@ -1,31 +1,14 @@
 /*
- * shell1.c
- * 
- * Copyright 2024 osboxes <osboxes@osboxes>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
+ * shell3.c
  * 
  * shell primitivo en foreground
  * soporta argumentos en los comandos y cualquier cantidad de espacios
  * intermedios entre los argumentos del comando
  * 
- */
+*/
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
@@ -105,4 +88,3 @@ int main(int argc, char **args)
 	} while(LOOP_GRCHERE);
 	return 0;
 }
-

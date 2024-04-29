@@ -1,36 +1,19 @@
 /*
- * shell1.c
- * 
- * Copyright 2024 osboxes <osboxes@osboxes>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
+ * shell5.c
  * 
  * shell primitivo en foreground
  * soporta argumentos en los comandos y cualquier cantidad de espacios
  * intermedios entre los argumentos del comando
  * 
- */
+*/
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <signal.h>
+#include <signal.h> // Este encabezado proporciona declaraciones de funciones y macros relacionadas con el manejo de señales. Las señales son eventos asíncronos que pueden ser generados por el sistema operativo o por otros procesos, y pueden ser utilizadas para notificar a un proceso de eventos importantes, como errores, eventos de temporización, o solicitudes de terminación. Algunas de las funciones y macros comunes proporcionadas son: signal(), kill(), sigaction(), sigemptyset(), sigfillset(), sigaddset(), sigdelset(), SIGINT, SIGTERM, SIGKILL
 
 #define LOOP_JROMER 1
 #define LOOP_GRCHERE strcmp(comando,"fin") != 0

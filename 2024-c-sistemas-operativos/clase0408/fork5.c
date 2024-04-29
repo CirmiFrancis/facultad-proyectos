@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
 #include <sys/types.h>
-#include <sys/wait.h>
+#include <sys/wait.h> // Este encabezado proporciona la función wait(), que se utiliza para esperar a que los procesos hijos terminen.
 #include <unistd.h>
 
 int main(int argc, char **argv)

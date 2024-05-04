@@ -1,24 +1,19 @@
 /*
-
 	Una sincronizacion entre dos procesos usado señales. Imprimir el abecedario de forma intercalada.
 	Padre = mayus
 	Hijo = minus
-
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
 #include <signal.h>
 
 void handler (int signum) {
 }
-
 
 int main() {
 	pid_t pid;
@@ -58,6 +53,5 @@ int main() {
 			}	
 		}
 	}
-	
 	return 0;
 }

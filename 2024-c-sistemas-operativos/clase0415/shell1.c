@@ -23,7 +23,7 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO ES NECESARIO.
 #include <unistd.h>
 #include <string.h> // Este encabezado proporciona declaraciones de funciones y macros relacionadas con manipulación de cadenas (strings). Algunas de las funciones más comunes incluyen: strcpy(), strncopy(), strcat(), strncat(), strlen(), strcmp(), strncmp(), strstr(), strchr(), strrchr()
 #include <sys/types.h>

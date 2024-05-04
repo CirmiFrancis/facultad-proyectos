@@ -4,11 +4,17 @@
  * shell primitivo en foreground y background
  * soporta argumentos en los comandos y cualquier cantidad de espacios
  * intermedios entre los argumentos del comando
- * 
 */
 
+// ls -l ... Lista el contenido del directorio actual en formato detallado.
+// ps ... Muestra una lista de procesos en ejecución en el sistema. La información es básica.
+// ps -l ... Muestra una lista de procesos en formato largo. Proporciona más detalles sobre los procesos, como el ID del proceso (PID)
+// ps -lax ... Muestra una lista de todos los procesos en formato largo, incluyendo aquellos de todos los usuarios en el sistema. La opción -a muestra todos los procesos y la opción -x muestra también los procesos que no están asociados con una terminal. 
+// ps ax ... Similar al anterior, muestra una lista de todos los procesos en formato corto, incluyendo aquellos de todos los usuarios en el sistema.
+// fin ... 
+
 #include <stdio.h>
-#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO ES NECESARIO.
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
@@ -29,7 +35,7 @@ void agrego_pid(pid_t p);
 void quito_pid(pid_t p);
 int listar_pid();
 
-//funciones para el manejo de se#ales  
+//funciones para el manejo de signal  
 void sig_child(int);
 void sig_int(int);
 void sig_alarma(int);

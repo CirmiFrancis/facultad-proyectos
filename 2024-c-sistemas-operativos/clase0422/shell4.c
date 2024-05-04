@@ -4,11 +4,10 @@
  * shell primitivo en foreground
  * soporta argumentos en los comandos y cualquier cantidad de espacios
  * intermedios entre los argumentos del comando
- * 
 */
 
 #include <stdio.h>
-#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO SE NECESARIO.
+#include <stdlib.h> // POR ALGÚN MOTIVO, ESTE NO ES NECESARIO.
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>

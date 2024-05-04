@@ -17,8 +17,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
- * 
- * 
 */
 
 #include <stdio.h> // Este encabezado proporciona las declaraciones para las funciones de entrada y salida estándar, como printf() y scanf().
@@ -29,6 +27,8 @@
 int main(int argc, char **argv)
 {
 	pid_t pid = fork();
-	printf("Hola! soy el proceso PID=%d, variable pid=%d\n",getpid(),pid);
+	printf("Hola! Soy el proceso PID=%d, mi hijo pid=%d\n", getpid(), pid);
 	return 0;
 }
+
+// Este programa crea un proceso hijo y devuelve el PID de ambos procesos. Es decir, devuelve el PID del proceso actual y del proceso hijo, para cada uno de los procesos, en este caso son 2 procesos.

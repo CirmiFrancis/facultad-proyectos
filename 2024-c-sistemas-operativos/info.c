@@ -11,7 +11,7 @@
 // Este encabezado proporciona prototipos para funciones estándar de Unix, como fork(), exec(), getpid(), etc. Si tu programa realiza llamadas al sistema relacionadas con la administración de procesos, como la creación de nuevos procesos o la obtención del identificador de proceso actual, necesitarás incluir este encabezado.
 
 #include <sys/wait.h> 
-// Este encabezado proporciona la función wait(), que se utiliza para esperar a que los procesos hijos terminen.
+// Este encabezado proporciona la función wait(), que se utiliza para esperar a que los procesos hijos terminen, evitando procesos huérfanos. También recogen el estado de salida del proceso hijo que ha terminado, evitando procesos zombies.
 
 #include <sys/stat.h> 
 // Este encabezado proporciona declaraciones de funciones y tipos de datos para la obtención de información sobre archivos, como los permisos de archivos, el tamaño, la marca de tiempo, etc. Por ejemplo, la estructura struct stat se define en este encabezado y se utiliza para almacenar información sobre un archivo después de llamar a la función stat(). 
@@ -77,4 +77,17 @@ FORK & PID
  ADVERTENCIA: 
  A veces el getppid() devuelve 1, y esto significa que el proceso padre del proceso actual ya no existe y el proceso init (pid=1) se convierte en el padre del proceso actual. Esto puede ocurrir si el proceso padre terminó su ejecución antes de que el proceso actual llamara a getppid().
  Para evitar esto se utiliza wait(0).
+*/
+
+/*
+    Proceso Huérfano:
+        Un proceso huérfano es un proceso hijo cuyo proceso padre ha terminado antes que él. El proceso huérfano sigue ejecutándose, pero su padre ya no está presente para esperarlo o manejar su estado.
+
+    Proceso Zombie:
+        Un proceso zombie es un proceso hijo que ha terminado de ejecutarse, pero su entrada aún permanece en la tabla de procesos del sistema operativo (consumiendo recursos del sistema). Esto sucede cuando el proceso padre no ha llamado a la función wait() o waitpid() para obtener el estado de salida del proceso hijo después de que termina.
+
+        Un proceso hijo termina su ejecución y devuelve un valor de salida normalmente. El problema que lleva a la generación de procesos zombie no radica en la falta de salida del proceso hijo, sino en la falta de recolección de esta salida por parte de su proceso padre.
+
+    En resumen, la diferencia clave radica en el estado del proceso hijo después de que su proceso padre termina. 
+    Un proceso huérfano sigue ejecutándose sin un proceso padre vivo, mientras que un proceso zombie ha terminado su ejecución pero su estado de salida no ha sido recogido por su proceso padre.
 */

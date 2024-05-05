@@ -4,6 +4,16 @@
 	Hijo = minus
 */
 
+/*
+	Las señales (signals) son una forma de comunicación asíncrona entre procesos o entre un proceso y el sistema operativo. 
+	Las señales se utilizan para notificar a un proceso de eventos o condiciones específicas que ocurren durante la ejecución del programa. 
+	Algunos ejemplos comunes de señales incluyen la señal de interrupción (SIGINT), que se envía al presionar Ctrl+C en la terminal, y la señal de finalización (SIGTERM), que se envía para solicitar la terminación de un programa.
+
+	El manejo de señales en C se realiza mediante la función signal() o mediante la función sigaction(). Estas funciones permiten registrar funciones de manejo de señales que se ejecutarán cuando se reciba una señal específica.
+*/
+
+// Incompleto. Sacado de CHAT GPT.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

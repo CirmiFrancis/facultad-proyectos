@@ -1,0 +1,72 @@
+#
+#ATENCION ESTE ES EL ARCHIVO ACTUALIZADO A NUEVA SINTAXIS, USARLO COMO PLANTILLA PARA EL RESTO
+#
+#pausaProcesos={1,0}
+#1=si, 0=no
+#1 significa que el usuario debe presionar enter en la ventana para que el proceso termine
+#0 significa que el proceso termina sin necesidad que el usuario presione ninguna tecla
+#por defecto se asume pausaProcesos=1 
+#esta opcion es util si hay problemas en la ejecucion de procesos, por ejemplo, se indicaron mal los
+#parametros de entrada, etc entonces se permitira que el usuario vea mensajes antes de que se cierre
+#la ventana de ejecucion
+# 
+pausaProcesos=0
+#
+#monitor=<cantidad de segundos> cada cuantos segundos monitoreo la finalizacion de procesos lanzados
+#si no indica nada, asume chequeo cada 3 segundos, el valor tiene que ser >= 1 segundo
+#
+monitor=5
+#
+#terminal a utilizar para correr procesos
+#   $comando es la linea de comando a ejecutar para lanzar proceso
+#   $titulo  es el nombre del proceso
+#   $workdir es el directorio actual de este proceso
+terminal=/usr/bin/lxterminal -t "$titulo" --working-directory="$workdir" -e "$comando"
+#key de recurso, sino indica clave, se asume 0xA
+clave=0xA
+#archivo log a utilizar, por defecto usa log.txt
+#log=log2.txt
+#logea proberen y verhogen P() V(), por defecto no (0)
+#logpv={0,1}
+#logpv=0
+#logea inicio y fin de procesos, por defecto si (1)
+#loginicio={0,1}
+loginicio=0
+#inicializacion de semaforos
+#
+Sa=1
+Sb=0
+Sx=0
+Sc=0
+#
+#declaracion de proceso A sintaxis: proceso [nombre] [ejecuta [N]] [log [archivo log]] [prioridad [N]]
+#N siempre son segundos
+#por defecto no hay espera de segundos en SC y ejecuta infinito hasta enviar CTRL-C (SIGINT) al proceso 
+#todos los procesos usan log.txt o lo indicado en clave log a menos que aqui se indique otro log para este proceso
+#archivo log no admite espacios intermedios, al igual que nombre del proceso
+#debe respetarse el orden de los parametros del proceso (no puede indicarse log antes que ejecuta)
+#
+# SC [nombre][espera [N]]
+# 
+# tanto nombre como espera es opcional en SC
+#
+proceso AAA ejecuta 100 prioridad 19
+	P(Sa)
+	SC AAA1 espera 1
+	V(Sb)
+	P(Sx)
+	SC AAA2 espera 1
+	V(Sc)
+finproceso AAA
+
+proceso BBB ejecuta 100
+	P(Sb)
+	SC espera 1
+	V(Sx)
+finproceso BBB
+
+proceso CCC ejecuta 100
+	P(Sc)
+	SC espera 1
+	V(Sa)
+finproceso CCC

@@ -1,0 +1,52 @@
+#
+#pausaProcesos={1,0}
+#1=si, 0=no
+#1 significa que el usuario debe presionar enter en la ventana para que el proceso termine
+#0 significa que el proceso termina sin necesidad que el usuario presione ninguna tecla
+#por defecto se asume pausaProcesos=1 
+#esta opcion es util si hay problemas en la ejecucion de procesos, por ejemplo, se indicaron mal los
+#parametros de entrada, etc entonces se permitira que el usuario vea mensajes antes de que se cierre
+#la ventana de ejecucion
+# 
+pausaProcesos=0
+#
+#monitor=<cantidad de segundos> cada cuantos segundos monitoreo la finalizacion de procesos lanzados
+#si no indica nada, asume chequeo cada 3 segundos, el valor tiene que ser >= 1 segundo
+#
+monitor=5
+#
+#terminal a utilizar para correr procesos
+#   $comando es la linea de comando a ejecutar para lanzar proceso
+#   $titulo  es el nombre del proceso
+#   $workdir es el directorio actual de este proceso
+terminal=/usr/bin/lxterminal -t "$titulo" --working-directory="$workdir" -e "$comando"
+#key de recurso, sino indica clave, se asume 0xA
+clave=0xA
+#Borro los archivos logs antes de comenzar?
+#borroLogs={1,0}
+#1 borra todos los logs, 0 no los borra, valor por defecto 1
+#
+borroLogs=1
+#archivo log a utilizar, por defecto usa log.txt
+#log=log2.txt
+#inicializacion de semaforos
+A=1
+B=0
+#declaracion de proceso A con delay de 1 segundo en SC
+#declaracion de proceso A sintaxis: proceso [nombre] [espera [N]] [ejecuta [N]] [log [archivo log]]
+#N siempre son segundos
+#por defecto no hay espera de segundos en SC y ejecuta infinito hasta enviar CTRL-C (SIGINT) al proceso 
+#todos los procesos usan log.txt o lo indicado en clave log a menos que aqui se indique otro log para este proceso
+#archivo log no admite espacios intermedios
+#debe respetarse el orden de los parametros del proceso (no puede indicarse log antes que espera o ejecuta)
+proceso A espera 1 ejecuta 30
+	P(A)
+	SC
+	V(B)
+finproceso A
+
+proceso B espera 1 ejecuta 30
+	P(B)
+	SC
+	V(A)
+finproceso B

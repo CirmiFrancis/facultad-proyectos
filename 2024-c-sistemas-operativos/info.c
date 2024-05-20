@@ -40,6 +40,7 @@
  * 
  * - COMPILAR Y CREAR EJECUTABLE -
  * gcc -o programa programa.c
+ * gcc -Wall -o programa programa.c
  *
  * - EJECUTAR -
  * ./programa

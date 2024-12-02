@@ -1,0 +1,10 @@
+total 52
+drwxr-xr-x 2 osboxes osboxes  4096 oct 28 18:36 app1
+drwxr-xr-x 2 osboxes osboxes  4096 oct 28 18:36 app2
+drwxr-xr-x 2 osboxes osboxes  4096 oct 28 18:36 app3
+drwxr-xr-x 2 osboxes osboxes  4096 oct 28 20:23 app4
+-rwxr-xr-x 1 osboxes osboxes  3220 oct 28 18:36 grclogo.gif
+-rwxr-xr-x 1 osboxes osboxes 15575 oct 28 18:36 grclogo.jpg
+-rw-r--r-- 1 osboxes osboxes  8185 oct 28 18:36 index.html
+drwxr-xr-x 3 osboxes osboxes  4096 oct 28 18:36 lib
+-rw-r--r-- 1 osboxes osboxes    86 oct 28 18:36 noesta.html

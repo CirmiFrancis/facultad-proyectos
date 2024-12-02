@@ -1,0 +1,23 @@
+HTTP/ 1.1 200 OK
+Content-type: text/html
+
+<meta charset= "utf-8">
+index.html<br> 
+--------------------------------------------------<br>
+<HTML>
+<BODY>
+<form method="POST" action="bd01.cgi">
+   <input type="submit" value="SGBD Postgres"/>
+</form>
+<form method="POST" action="bd02.cgi">
+ <input type="submit" value="SGBD MySql-Mariadb"/>
+</form>
+<form method="POST" action="sh01.cgi">
+ <input type="submit" value="COMANDOS LINUX"/>
+</form>
+<form method="POST" action="ar01.cgi">
+ <input type="submit" value="VER EL CONTENIDO DE UN ARCHIVO DEL PWD DEL SERVIDOR"/>
+</form>
+</body>
+</html>
+

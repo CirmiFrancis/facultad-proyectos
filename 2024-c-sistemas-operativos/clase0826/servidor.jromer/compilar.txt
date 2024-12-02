@@ -1,0 +1,20 @@
+gcc AccesoPostgresql.c -Wall -g -c -lpq -I/usr/include/postgresql/
+gcc AccesoMysql.c -Wall -g -c -L/usr/include/mysql -lmariadbclient
+gcc server.c -Wall -o ser
+gcc bd01.c -Wall -o bd01.cgi
+gcc bd001.c -Wall -g -c 
+gcc bd02.c -Wall -o bd02.cgi
+gcc bd002.c -Wall -g -c 
+
+gcc sh01.c -Wall -o sh01.cgi
+gcc sh001.c -Wall -o sh001.cgi
+
+gcc ar01.c -Wall -o ar01.cgi
+gcc ar001.c -Wall -o ar001.cgi
+
+gcc -Wall -g AccesoPostgresql.o bd001.o -o bd001.cgi -lpq -I/usr/include/postgresql/
+gcc -Wall -g AccesoMysql.o bd002.o -o bd002.cgi  -L/usr/lib/mysql -lmariadbclient
+
+./ser
+
+

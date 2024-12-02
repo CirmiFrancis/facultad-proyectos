@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>grchere web server 2.0</title>
+    <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<p>Hola Mundo! desde mi app4!</p>
+
+<div>
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" value="Juan"><br>	
+  <button name="miboton" id="miboton">Saludo</button>
+  <button name="mibotonA" id="mibotonA">Agregar</button>
+  <button name="mibotonE" id="mibotonE">Ejecutar</button>
+</div>
+<p>------------------RESULTADOS------------------------</p>
+<div id="resultado">
+</div>
+<script>
+/*******Testing si jquery fue cargado
+window.onload = function() {
+    if (window.jQuery) {  
+        // jQuery is loaded  
+        alert("JQuery cargado Ok!");
+    } else {
+        // jQuery is not loaded
+        alert("JQuery no cargado!");
+    }
+}
+************************************/	
+$("#miboton").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/app4.hola",
+        dataType: "json",
+        data: { 
+            "usuario": $("#nombre").val() 
+        },
+        success: function(result) {
+			//alert(result); // object json
+			//alert(result.saludo); // 'Hola ..'
+            document.getElementById("resultado").innerHTML = result.saludo;
+        },
+        error: function(result) {
+            alert('Envio con Error!');
+        }
+    });
+});
+
+$("#mibotonA").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/app4.agregar",
+        dataType: "json",
+        data: { 
+            "usuario": $("#nombre").val() 
+        },
+        success: function(result) {
+			//alert(result); // object json
+			//alert(result.saludo); // 'Hola ..'
+            document.getElementById("resultado").innerHTML = result.saludo;
+        },
+        error: function(result) {
+            alert('Envio con Error!');
+        }
+    });
+});
+
+$("#mibotonE").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/app4.ejecutar",
+        dataType: "json",
+        data: { 
+            "usuario": $("#nombre").val() 
+        },
+        success: function(result) {
+			//alert(result); // object json
+			//alert(result.saludo); // 'Hola ..'
+            document.getElementById("resultado").innerHTML = result.saludo;
+        },
+        error: function(result) {
+            alert('Envio con Error!');
+        }
+    });
+});
+
+function borrar() {
+	document.getElementById("resultado").innerHTML = '';
+}
+
+</script>
+</body>
+</html>

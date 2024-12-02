@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>grchere web server 2.0</title>
+    <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<p>Hola Mundo! desde mi webserver2!</p>
+<div>
+	<form id="frm4">
+	  <label for="usuario">Usuario:</label>
+	  <input type="text" id="usuario" name="usuario" value="jromer"><br>
+	  <label for="clave">Clave:</label>
+	  <input type="password" id="clave" name="clave"><br>
+	</form>
+	<button name="miboton" id="miboton">logon</button>
+</div>
+<div>
+	<button name="miboton1" id="miboton1">logoff</button>
+</div>
+<div>
+	<button name="miboton3" id="miboton3" onclick="borrar()">Borro Resultado</button>
+</div>
+<p>------------------RESULTADOS------------------------</p>
+<div id="resultado">
+</div>
+<script>
+/*******Testing si jquery fue cargado
+window.onload = function() {
+    if (window.jQuery) {  
+        // jQuery is loaded  
+        alert("JQuery cargado Ok!");
+    } else {
+        // jQuery is not loaded
+        alert("JQuery no cargado!");
+    }
+}
+************************************/	
+
+let mysid = -1;
+let logeado = false;
+$("#miboton").click(function(e) { // Login
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/app4.login", // app4 procesa app4.*
+        dataType: "json",
+        data: { 
+            usuario: $("#usuario").val(),
+            clave: $("#clave").val() 
+        },
+        success: function(result) {
+            document.getElementById("resultado").innerHTML = result;
+            if ( result.ret == 0 ) { 
+				mysid = result.sid;
+				logeado = true;
+			}
+        },
+        error: function(result) {
+            alert('Envio con Error!');
+        }
+    });
+});
+
+$("#miboton1").click(function(e) { // Logoff
+	if ( !logeado ) {
+		alert('Ud no esta logeado!');
+		return;
+	}
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/app4.logoff", // app4 procesa app4.*
+        dataType: "json",
+        data: { 
+            sid: mysid 
+        },
+        success: function(result) {
+            document.getElementById("resultado").innerHTML = result;
+            if ( result.ret == 0 ) {
+				sid = -1;
+				logeado = false;
+			}
+        },
+        error: function(result) {
+            alert('Envio con Error!');
+        }
+    });
+});
+
+
+function borrar() {
+	document.getElementById("resultado").innerHTML = '';
+}
+
+</script>
+</body>
+</html>

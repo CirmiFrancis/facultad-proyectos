@@ -1,0 +1,54 @@
+===========================================================================
+Links de ayuda para este ejercicio:
+
+Minishell 01
+https://www.youtube.com/watch?v=8eZUwHpPVjE
+
+C Linux - Relación entre wait y exit - 05
+https://www.youtube.com/watch?v=KKmqjPQu3Oo
+
+C Linux Señales 01
+https://www.youtube.com/watch?v=RqGh52B5B5A
+
+C Linux Señales 02 Ejemplo
+https://www.youtube.com/watch?v=3mkP_GAxKfs
+
+Klingon Vs. La Federación Interestelar (Señales y Conjunto de Señales)
+https://www.youtube.com/watch?v=ZzXqR1VVBOU
+
+===========================================================================
+Links de ayuda:
+
+Sincronización BACA
+https://www.youtube.com/watch?v=UZLaeemleRk
+
+C Linux Semáforos System V 01
+https://www.youtube.com/watch?v=ub2YTpCq3Aw
+
+C Linux Semáforos System V Ejemplo 02
+https://www.youtube.com/watch?v=vvI2-CZ1Bik
+
+C Linux Semáforos System V Otros Dos Ejemplos 03
+https://www.youtube.com/watch?v=Gy4baWme_ek
+
+C Linux Semáforos System V ABoCDoE 07
+https://www.youtube.com/watch?v=vLZt2yYjX6w
+
+Semáforos POSIX Sin Nombre en Procesos Independientes, ejemplo en lenguaje C
+https://www.youtube.com/watch?v=T6ZOOxhDSe8
+
+===========================================================================
+Links de ayuda para este ejercicio:
+
+Pipes 1
+https://www.youtube.com/watch?v=WigeRo_m6VE
+
+Pipes 2
+https://www.youtube.com/watch?v=XM8DbmgI5TE
+
+Pipes 3
+https://www.youtube.com/watch?v=tXJMeasmlI8
+
+===========================================================================
+Instalar servidor web grchere:
+https://gitlab.com/grchere/webserver
